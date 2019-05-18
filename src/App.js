@@ -1,19 +1,27 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-// import Home from './components/Home'
-import './assect/css/App.css'
-import Index from './components/Index'
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import User from './components/User'
+import Title from './components/Title'
+import Shop from './components/Shop'
+import './assect/css/index.css'
+import routes from './components/model/router'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/*<Home></Home>*/}
-          <Index></Index>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <header className='title'>
+                    <Link to='/'>首页组件</Link>
+                    <Link to='/user'>用户组件</Link>
+                    <Link to='/shop'>商户组件</Link>
+                </header>
+                <Route exact path='/' component={Title}/>
+                <Route exact path='/user' component={User}/>
+                <Route exact path='/shop' component={Shop}/>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
